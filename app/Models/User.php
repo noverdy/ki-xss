@@ -18,9 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'nim',
         'name',
-        'email',
-        'password',
     ];
 
     /**
@@ -41,4 +40,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getNicknameAttribute()
+    {
+        $name = explode(' ', $this->name);
+        if (count($name) === 1) {
+            return $name[0];
+        }
+        if (strlen($name[0]) < 3) {
+            return $name[1];
+        }
+        if (str_contains($name[0], '.')) {
+            return $name[1];
+        }
+        if (str_contains(strtolower($name[0]), 'muh')) {
+            return $name[1];
+        }
+        return $name[0];
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
