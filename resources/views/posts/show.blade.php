@@ -37,7 +37,7 @@
 
         <div class="bg-body-secondary">
             <div class="p-3">
-                <code class="text-dark">{!! nl2br($post->content) !!}</code>
+                <blockquote class="m-0 text-dark">{!! nl2br($post->content) !!}</blockquote>
             </div>
         </div>
     </main>
