@@ -24,6 +24,6 @@ class PostSeeder extends Seeder
             'visibility' => '2',
             'user_id' => User::where('nim', env('ADMIN_USERNAME'))->first()->id,
         ]);
-        Post::factory(50)->create();
+        Post::factory(10)->create();
     }
 }

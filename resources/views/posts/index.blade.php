@@ -14,17 +14,13 @@
                             </div>
                             <div class="card-body">
                                 <div class="h-100 d-flex flex-column justify-content-between">
-                                    <div class="mb-4">
-                                        <h5 class="card-title mb-3">{{ $post->title }}</h5>
-                                        <div class="bg-body-secondary">
-                                            <code class="text-dark">
-                                                {{ mb_strimwidth($post->content, 0, 50, '...') }}
-                                            </code>
-                                        </div>
+                                    <div class="mb-2">
+                                        <h5 class="card-title">{{ $post->title }}</h5>
                                     </div>
-                                    <div class="text-end">
-                                        <a href="{{ route('posts.show', $post) }}" class="btn btn-dark"><i
-                                                class="fa-solid fa-arrow-right"></i></a>
+                                    <div class="text-center">
+                                        <a href="{{ route('posts.show', $post) }}" class="btn btn-dark">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
