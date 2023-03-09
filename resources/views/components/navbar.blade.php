@@ -18,10 +18,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link @if (app('request')->route()->getName() == 'posts.create') active @endif"
-                            href="{{ route('posts.create') }}">Create Note</a>
-                    </li>
+                    @if (auth()->user()->nim !== env('ADMIN_USERNAME'))
+                        <li class="nav-item">
+                            <a class="nav-link @if (app('request')->route()->getName() == 'posts.create') active @endif"
+                                href="{{ route('posts.create') }}">Create Note</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link @if (app('request')->route()->getName() == 'posts.index') active @endif"
                             href="{{ route('posts.index') }}">Explore Notes</a>

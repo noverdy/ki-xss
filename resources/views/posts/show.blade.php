@@ -25,14 +25,17 @@
                     </span>
                 @endif
             </div>
-            <div>
-                @if ($post->user->id === auth()->user()->id)
-                    <a class="btn btn-warning" href="{{ route('posts.edit', $post) }}">Edit</a>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Delete
-                    </button>
-                @endif
-            </div>
+            @if (auth()->user()->nim !== env('ADMIN_USERNAME'))
+                <div>
+                    @if ($post->user->id === auth()->user()->id)
+                        <a class="btn btn-warning" href="{{ route('posts.edit', $post) }}">Edit</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Delete
+                        </button>
+                    @endif
+                </div>
+            @endif
         </div>
 
         <div class="bg-body-secondary">

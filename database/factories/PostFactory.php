@@ -26,7 +26,7 @@ class PostFactory extends Factory
             'slug' => $slug,
             'content' => $this->faker->paragraphs(5, true),
             'visibility' => $this->faker->numberBetween(0, 2),
-            'user_id' => User::inRandomOrder()->first()->id,
+            'user_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

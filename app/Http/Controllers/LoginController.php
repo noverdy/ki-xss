@@ -21,6 +21,15 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
+        if (
+            $credentials['nim'] === env('ADMIN_USERNAME') &&
+            $credentials['password'] === env('ADMIN_PASSWORD')
+        ) {
+            $user = User::where('nim', $credentials['nim'])->first();
+            Auth::login($user);
+            return redirect()->route('index');
+        }
+
         $cl = new Client();
         $cl->setServerParameter('HTTP_USER_AGENT', 'Notes App - Praktikum Keamanan Informasi');
 
