@@ -21,12 +21,13 @@
                         <label for="nim">NIM</label>
                     </div>
                     <div class="form-floating mb-4">
-                        <input name="password" type="password" class="form-control" id="floatingPassword"
+                        <input name="password" type="password" class="form-control" id="password"
                             placeholder="Password" required>
-                        <label for="floatingPassword">Password</label>
+                        <label for="password">Password</label>
                     </div>
 
-                    <button type="submit" class="btn btn-dark text-white w-100 py-2 rounded-pill mb-3">Login</button>
+                    <button type="submit" id="submit"
+                        class="btn btn-dark text-white w-100 py-2 rounded-pill mb-3">Login</button>
                 </form>
                 <span class="text-body-tertiary" style="font-size: 0.85em">
                     Copyright &copy;{{ now()->year }} AcRtf
