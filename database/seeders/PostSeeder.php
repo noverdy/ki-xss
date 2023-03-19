@@ -17,13 +17,16 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::create([
-            'title' => env('ADMIN_POST_TITLE'),
-            'slug' => Str::slug(env('ADMIN_POST_TITLE') . '-' . Str::random(4)),
-            'content' => env('ADMIN_POST_CONTENT'),
-            'visibility' => '2',
-            'user_id' => User::where('nim', env('ADMIN_USERNAME'))->first()->id,
-        ]);
-        Post::factory(10)->create();
+        $flag = Post::where('title', env('ADMIN_POST_TITLE'))->where('content', env('ADMIN_POST_CONTENT'))->get();
+        if (is_null($flag->first())) {
+            Post::create([
+                'title' => env('ADMIN_POST_TITLE'),
+                'slug' => Str::slug(env('ADMIN_POST_TITLE') . '-' . Str::random(4)),
+                'content' => env('ADMIN_POST_CONTENT'),
+                'visibility' => '2',
+                'user_id' => User::where('nim', env('ADMIN_USERNAME'))->first()->id,
+            ]);
+            Post::factory(10)->create();
+        }
     }
 }
